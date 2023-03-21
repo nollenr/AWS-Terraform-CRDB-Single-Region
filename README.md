@@ -69,8 +69,8 @@ terraform apply
 ```
 
 ## Files in this repo
-`terraform.tf` Sets the AWS provider and versions
-`variables.tf` Creates the variables, definitions and defaults
-`terraform.tfvars` Easy access to variable values (without having to change the default value in `variables.tf`)
-`main.tf` Defines and creates the AWS resources
-`outputs.tf` Defines the outputs from the script.  These are variables which are referencable in `terraform console`
+* `terraform.tf` Sets the AWS provider and versions
+* `variables.tf` Creates the variables, definitions and defaults
+* `terraform.tfvars` Easy access to variable values (without having to change the default value in `variables.tf`)
+* `main.tf` Defines and creates the AWS resources
+* `outputs.tf` Defines the outputs from the script.  These are variables which are referencable in `terraform console`
