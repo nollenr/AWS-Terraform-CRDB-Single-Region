@@ -12,7 +12,7 @@ AWS Terraform - CockroachDB on EC2
 * public (3) and private (3) subnets
 * route tables (public & private)
 * Security group for intra-node access
-* Security group for a specific IP with access for SSH, RDP, HTTP (8080), and Database on 26257
+* Security group for a specific IP (from variable `my_ip_address`) with access for SSH, RDP, HTTP (8080), and Database on 26257
 * Database Instances (number of instances is configurable via a variable)
 * HA Proxy (optional) -- if the HA Proxy is created, it is configured to access the database instances
 * APP Node (optional) -- if the APP node is created, a function is created (CRDB) which will connect to the database via haproxy using client certs
@@ -22,30 +22,30 @@ AWS Terraform - CockroachDB on EC2
 
 ## Variables
 ### Variables available in terraform.tfvars 
-* my_ip_address = "The IP address of the user running this script.  This is used to configure the a security group with access to SSH, RDP, HTTP and Database ports in all public instances."
-* aws_region_01 = "AWS Region to create the objects"
-* owner = "A tag is placed on all resources created by this Terraform script.  Tag is (owner: "owner")"
-* crdb_nodes = Number of CockroachDB Nodes to create.  The number should be a multiple of 3.  The script will use 3 AZs and place equal number of nodes in each AZ.  
-* crdb_instance_type = "The instance type to choose for the CockroachDB nodes.  NOTE:  There is a condition on this variable in variables.tf."
-* crdb_root_volume_type = "storage type for the CRDB root volume.  Usual values are 'gp2' or gp3'"
-* crdb_root_volume_size = The size in GB for the root volume attached to the CRDB nodes.  
-* run_init = "yes or no -- should the 'cockroach init' command be issued after the nodes are created?"
-* include_ha_proxy = "yes or no - should an HA Proxy node be created and configured."
-* haproxy_instance_type = "The instance type to choose for the HA Proxy node."
-* include_app = "yes or no - should an app node be included?"
-* app_instance_type = "The instance type to choose for the APP Node"
-* crdb_instance_key_name = "The name of the AWS Key to use for all instances created by this Terraform Script.  This must be an existing Key for the region selected."
-* create_admin_user = "yes or no - should an admin user (with cert) be creawted for this datagbase"
-* admin_user_name = "Username of the admin user"
+* `my_ip_address` = "The IP address of the user running this script.  This is used to configure the a security group with access to SSH, RDP, HTTP and Database ports in all public instances."
+* `aws_region_01` = "AWS Region to create the objects"
+* `owner` = "A tag is placed on all resources created by this Terraform script.  Tag is (owner: "owner")"
+* `crdb_nodes` = Number of CockroachDB Nodes to create.  The number should be a multiple of 3.  The script will use 3 AZs and place equal number of nodes in each AZ.  
+* `crdb_instance_type` = "The instance type to choose for the CockroachDB nodes.  NOTE:  There is a condition on this variable in variables.tf."
+* `crdb_root_volume_type` = "storage type for the CRDB root volume.  Usual values are 'gp2' or gp3'"
+* `crdb_root_volume_size` = The size in GB for the root volume attached to the CRDB nodes.  
+* `run_init` = "yes or no -- should the 'cockroach init' command be issued after the nodes are created?"
+* `include_ha_proxy` = "yes or no - should an HA Proxy node be created and configured."
+* `haproxy_instance_type` = "The instance type to choose for the HA Proxy node."
+* `include_app` = "yes or no - should an app node be included?"
+* `app_instance_type` = "The instance type to choose for the APP Node"
+* `crdb_instance_key_name` = "The name of the AWS Key to use for all instances created by this Terraform Script.  This must be an existing Key for the region selected."
+* `create_admin_user` = "yes or no - should an admin user (with cert) be creawted for this datagbase"
+* `admin_user_name` = "Username of the admin user"
 
 ### Variables available in variables.tf
-* In addition to the variables listed above, the following variables are also avialable
-* project_name    =  Name of the project.
-* environment     =  Name of the environment.
-* owner           =  Owner of the infrastructure
-* resource_tags   =  Tags to set for all resources
-* vpc_cidr        =  CIDR block for the VPC
-* crdb_version    =  CockroachDB Version  Note:  There is a condition on this field -- only values in the conditional statement will be allowed.
+  In addition to the variables listed above, the following variables are also avialable
+* `project_name`    =  Name of the project.
+* `environment`     =  Name of the environment.
+* `owner`           =  Owner of the infrastructure
+* `resource_tags`   =  Tags to set for all resources
+* `vpc_cidr`        =  CIDR block for the VPC
+* `crdb_version`    =  CockroachDB Version  Note:  There is a condition on this field -- only values in the conditional statement will be allowed.
 
 ## Running the Terraform Script
 ### Install Terraform
