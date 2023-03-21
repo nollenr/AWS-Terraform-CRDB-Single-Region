@@ -1,0 +1,55 @@
+Terraform Tips & Tricks: Loops, if-statements, and gotchas - author of "Terraform: Up and Running"
+https://blog.gruntwork.io/terraform-tips-tricks-loops-if-statements-and-gotchas-f739bbae55f9
+
+
+
+For Each Loops
+https://www.daveperrett.com/articles/2021/08/19/nested-for-each-with-terraform/
+
+
+
+VPC Peering using Flatten
+https://discuss.hashicorp.com/t/using-flatten-on-a-nested-map-of-differing-value-types/11901/7
+
+
+
+Depends on
+https://developer.hashicorp.com/terraform/language/meta-arguments/depends_on
+
+
+
+AWS Instance
+https://developer.hashicorp.com/terraform/language/meta-arguments/depends_on
+
+
+
+Console
+https://developer.hashicorp.com/terraform/cli/commands/console
+
+
+
+Data Sources
+https://developer.hashicorp.com/terraform/language/data-sources
+
+
+
+Flatten
+https://developer.hashicorp.com/terraform/language/functions/flatten
+
+
+
+Count
+https://developer.hashicorp.com/terraform/language/meta-arguments/count
+https://stackoverflow.com/questions/69918762/how-to-use-a-condition-count-statement-in-terraform
+
+
+
+AWS Network Interface
+https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/network_interface
+
+
+
+Validating Variables
+https://kevingimbel.de/blog/2021/06/validating-variables-in-terraform/
+
+

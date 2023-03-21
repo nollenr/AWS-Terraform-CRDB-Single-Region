@@ -1,0 +1,15 @@
+my_ip_address = "98.148.51.154"
+aws_region_01 = "us-east-1"
+owner = "nollen"
+crdb_nodes = 9
+crdb_instance_type = "t2.micro"
+crdb_root_volume_type = "gp3"
+crdb_root_volume_size = 8
+run_init = "yes"
+include_ha_proxy = "yes"
+haproxy_instance_type = "t3a.micro"
+include_app = "yes"
+app_instance_type = "t3a.micro"
+crdb_instance_key_name = "nollen-cockroach-us-east-1-kp01"
+create_admin_user = "yes"
+admin_user_name = "ron"
