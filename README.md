@@ -1,8 +1,6 @@
 AWS Terraform - CockroachDB on EC2
 ==================================
 
-List database versions as comments in variables.tf
-
 ## The Terraform script creates the following infrastructure:
 * tls private database keys
 * self-signed cert (ca.crt) for tsl connections to the database
