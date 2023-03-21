@@ -1,8 +1,6 @@
 AWS Terraform - CockroachDB on EC2
 ==================================
 
-TODO:
--------------------
 List database versions as comments in variables.tf
 
 ## The Terraform script creates the following infrastructure:
