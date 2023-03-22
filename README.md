@@ -55,14 +55,14 @@ sudo yum install -y yum-utils
 sudo yum-config-manager --add-repo https://rpm.releases.hashicorp.com/AmazonLinux/hashicorp.repo
 ```
 
-### Generate and AWS Access Key and Secret Security Credentials
+### Generate AWS Access Key and Secret Security Credentials
 The user behind the security credentials will need permissions to create each of the resources listed above.   
 
 ### Run this Terraform Script
 ```terraform
 export AWS_ACCESS_KEY_ID={ID}
 export AWS_SECRET_ACCESS_KEY={SECRET}
-terraform fmt
+terraform fmt (optinal)
 terraform validate
 terraform plan
 terraform apply
