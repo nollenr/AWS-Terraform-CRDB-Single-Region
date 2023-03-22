@@ -53,6 +53,12 @@ I run the script from a small app server running AWS Linux 2 in any AWS region -
 ```terraform
 sudo yum install -y yum-utils
 sudo yum-config-manager --add-repo https://rpm.releases.hashicorp.com/AmazonLinux/hashicorp.repo
+sudo yum -y install terraform
+```
+
+You may also need git installed
+```
+sudo yum install git
 ```
 
 ### Generate AWS Access Key and Secret Security Credentials
