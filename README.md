@@ -66,6 +66,8 @@ The user behind the security credentials will need permissions to create each of
 
 ### Run this Terraform Script
 ```terraform
+git clone https://github.com/nollenr/AWS-Terraform-CRDB.git
+cd AWS-Terraform-CRDB/
 export AWS_ACCESS_KEY_ID={ID}
 export AWS_SECRET_ACCESS_KEY={SECRET}
 terraform fmt (optinal)
