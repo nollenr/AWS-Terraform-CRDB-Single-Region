@@ -37,15 +37,13 @@ AWS Terraform - CockroachDB on EC2
 * `crdb_instance_key_name` = "The name of the AWS Key to use for all instances created by this Terraform Script.  This must be an existing Key for the region selected."
 * `create_admin_user` = "yes or no - should an admin user (with cert) be creawted for this datagbase"
 * `admin_user_name` = "Username of the admin user"
-
-### Variables available in variables.tf
-  In addition to the variables listed above, the following variables are also avialable
 * `project_name`    =  Name of the project.
 * `environment`     =  Name of the environment.
 * `owner`           =  Owner of the infrastructure
-* `resource_tags`   =  Tags to set for all resources
 * `vpc_cidr`        =  CIDR block for the VPC
 * `crdb_version`    =  CockroachDB Version  Note:  There is a condition on this field -- only values in the conditional statement will be allowed.
+
+**NOTE** :  the `crdb_instance_type`, `aws_region` and `crdb_version` are constrained in the `variables.tf` file.  If you're trying to run this script and running into problems, check the that values you are trying to use are allowed in the `variables.tf`.
 
 ## Running the Terraform Script
 ### Install Terraform
