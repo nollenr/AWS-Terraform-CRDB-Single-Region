@@ -12,7 +12,7 @@ AWS Terraform - CockroachDB on EC2
 * public (3) and private (3) subnets
 * route tables (public & private)
 * Security group for intra-node access
-* Security group for a specific IP (from variable `my_ip_address`) with access for SSH, RDP, HTTP (8080), and Database on 26257
+* Security group for a specific IP (from variable `my_ip_address`) with access for SSH, RDP, HTTP (8080), and Cockroach Database on 26257
 * Database Instances (number of instances is configurable via a variable)
 * HA Proxy (optional) -- if the HA Proxy is created, it is configured to access the database instances
 * APP Node (optional) -- if the APP node is created, a function is created (CRDB) which will connect to the database via haproxy using client certs
@@ -68,10 +68,12 @@ git clone https://github.com/nollenr/AWS-Terraform-CRDB.git
 cd AWS-Terraform-CRDB/
 export AWS_ACCESS_KEY_ID={ID}
 export AWS_SECRET_ACCESS_KEY={SECRET}
+terraform init
 terraform fmt (optinal)
 terraform validate
 terraform plan
 terraform apply
+terraform destroy
 ```
 
 ## Files in this repo
@@ -80,3 +82,36 @@ terraform apply
 * `terraform.tfvars` Easy access to variable values (without having to change the default value in `variables.tf`)
 * `main.tf` Defines and creates the AWS resources
 * `outputs.tf` Defines the outputs from the script.  These are variables which are referencable in `terraform console`
+
+# Connecting to the Cockroach Cluster from the "App" Instance
+## CRDB Function
+If you created both an HAProxy and App Instance your app instance is configured with a function that will automatically connect you to the database as an admin user using certificate authentication:
+```
+[ec2-user@ip-192-168-2-126 ~]$ CRDB
+#
+# Welcome to the CockroachDB SQL shell.
+# All statements must be terminated by a semicolon.
+# To exit, type: \q.
+#
+# Server version: CockroachDB CCL v22.2.7 (x86_64-pc-linux-gnu, built 2023/03/28 19:47:29, go1.19.6) (same version as client)
+# Cluster ID: 703c602a-2051-49de-9d45-bb7d71e8df3c
+#
+# Enter \? for a brief introduction.
+#
+root@192.168.2.116:26257/defaultdb>
+```
+
+You can also connect manually from the app instance using the following connection string:
+```
+cockroach-sql sql "postgresql://<local-ha-proxy-ip>:26257/defaultdb?sslmode=verify-full&sslrootcert=$HOME/certs/ca.crt&sslcert=certs/client.<admin-user-name>.crt&sslkey=certs/client.<admin-user-name>.key"
+```
+
+For example, if your HAProxy local IP address is:
+```192.168.2.116```
+
+And your admin-user-name (from terraform.tfvars) is: ```ron```
+
+Then, your connect string would be:
+```
+cockroach-sql sql "postgresql://192.168.2.116:26257/defaultdb?sslmode=verify-full&sslrootcert=$HOME/certs/ca.crt&sslcert=certs/client.ron.crt&sslkey=certs/client.ron.key"
+```
