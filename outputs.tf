@@ -87,3 +87,7 @@ output "join_string" {
     description = "CRDB Startup Join String - For joining additional nodes to an existing cluster"
     value = module.crdb-region-0.join_string
 }
+output "join_string_public"{
+    description = "CRDB Startup Join String Public - For joining additional nodes to an existing cluster using public IPs (multi-cloud)"
+    value = module.crdb-region-0.join_string_public
+}
