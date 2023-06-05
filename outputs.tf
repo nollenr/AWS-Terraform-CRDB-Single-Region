@@ -52,3 +52,38 @@
 #   description = "HA Proxy Private IP"
 #   value       = aws_network_interface.haproxy[0].private_ip
 # }
+
+# ----------------------------------------
+# Output Required for Use of multi-cloud
+# These values are needed for additional
+# nodes of the cluster.
+# ---------------------------------------- 
+output "ca_key" {
+    description = "ca.key / tls_private_key"
+    value = tls_private_key.crdb_ca_keys.private_key_pem
+    sensitive = true
+}
+output "ca_pub" {
+    description = "ca.pub / tls_public_key"
+    value = tls_private_key.crdb_ca_keys.public_key_pem
+    sensitive = true
+}
+output "ca_crt" {
+    description = "ca.crt / tls_cert"
+    value = tls_self_signed_cert.crdb_ca_cert.cert_pem
+    sensitive = true
+}
+output "client_name_crt" {
+    description = "client.name.crt / tls_user_cert"
+    value = tls_locally_signed_cert.user_cert.cert_pem
+    sensitive = true
+}
+output "client_name_key" {
+    description = "client.name.crt / tls_user_key"
+    value = tls_private_key.client_keys.private_key_pem
+    sensitive = true
+}
+output "join_string" {
+    description = "CRDB Startup Join String - For joining additional nodes to an existing cluster"
+    value = module.crdb-region-0.join_string
+}

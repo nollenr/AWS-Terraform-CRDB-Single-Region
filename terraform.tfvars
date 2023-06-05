@@ -1,8 +1,8 @@
 my_ip_address = "98.148.51.154"
 owner = "nollen"
-project_name = "single-instance"
+project_name = "multi-cloud"
 environment = "dev"
-crdb_version = "22.2.8"
+crdb_version = "22.2.9"
 crdb_nodes = 3
 crdb_instance_type = "t3a.micro"
 crdb_root_volume_type = "gp3"
@@ -14,12 +14,12 @@ haproxy_instance_type = "t3a.micro"
 include_app = "yes"
 app_instance_type = "t3a.micro"
 # this admin user is only created if the include_app is set to yes -- this will include the database user and associated certs installed on the app instance.
-admin_user_name = "bob"
+admin_user_name = "ron"
 
 # us-east-1, us-west-2, us-east-2
 vpc_cidr_list = ["192.168.3.0/24",]
-aws_region_list =  ["us-east-1",]
-aws_instance_keys = ["nollen-cockroach-us-east-1-kp01",]
+aws_region_list =  ["us-east-2",]
+aws_instance_keys = ["nollen-cockroach-us-east-2-kp01",]
 
 # us-east-1, ap-southeast-1, eu-central-1
 # vpc_cidr_list = ["192.168.3.0/24", "192.168.4.0/24", "192.168.5.0/24"]
