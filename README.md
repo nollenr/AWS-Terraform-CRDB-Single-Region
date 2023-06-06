@@ -68,6 +68,8 @@ git clone https://github.com/nollenr/AWS-Terraform-CRDB-Single-Region.git
 cd AWS-Terraform-CRDB-Single-Region/
 export AWS_ACCESS_KEY_ID={ID}
 export AWS_SECRET_ACCESS_KEY={SECRET}
+export TF_VAR_cluster_organization={CLUSTER ORG}
+export TF_VAR_enterprise_license={LICENSE}
 terraform init
 terraform fmt (optinal)
 terraform validate
