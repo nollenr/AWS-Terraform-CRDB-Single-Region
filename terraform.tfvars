@@ -2,9 +2,9 @@ my_ip_address = "98.148.51.154"
 owner = "nollen"
 project_name = "multi-cloud"
 environment = "dev"
-crdb_version = "22.2.10"
+crdb_version = "23.1.4"
 crdb_nodes = 3
-crdb_instance_type = "t3a.micro"
+crdb_instance_type = "t3a.small"
 crdb_root_volume_type = "gp3"
 crdb_root_volume_size = 8
 # To include an HAProxy instance, set 'include_ha_proxy' to yes and supply an 'haproxy_instance_type'
